@@ -1,0 +1,57 @@
+.footerContainer { 
+    margin-top: 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap : 2rem; 
+    height:15rem; 
+}
+
+.line {
+    height: 1px; 
+    width: 80%;
+    background-color: rgb(30, 29, 29);
+}
+
+.socialsContainer {
+    display: flex;
+    gap: 2rem; 
+}
+
+.social-icon{
+    width: 2rem;
+    height: 2rem; 
+    fill: white; 
+    transition: transform .2s ease;
+}
+
+.social-icon:hover{
+    transform: scale(1.2); 
+    cursor: pointer;
+}
+
+.social-icon:not(:hover) {
+    transform: scale(1);
+}
+
+
+
+
+
+
+.emailContainer {
+    display: flex;   
+    gap: 1rem; 
+}
+
+.emailLink {
+    color: rgb(89, 89, 235); 
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.emailLink:hover {
+    color: rgb(141, 141, 240); 
+}
+

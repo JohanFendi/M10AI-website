@@ -1,0 +1,61 @@
+
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 10rem; 
+}
+
+.quote {
+    font-size: 2rem;
+}
+
+.timelineContainer {
+    display: flex;
+    gap : 10%; 
+    justify-content: center;
+}
+
+.timelineSection, .timelineBarContainer,
+.leftHappeningContainer, .rightHappeningContainer {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.leftHappeningContainer, .rightHappeningContainer {
+    margin-top: 1rem; /*Padding to align with the first blue circle of the timeline*/
+    gap : 1rem; 
+}
+
+.timelineSection {
+    align-items: center;
+    position: relative;
+}
+
+.timelineBar {
+    background: linear-gradient(to bottom, #0e57bd, #a6b408); 
+    width: 0.25rem;   
+    box-shadow: 0 0 1rem 1rem rgba(54, 56, 7, 0.25); 
+}
+
+.timelineCircle {
+    background-color:#0e57bd;
+    border-radius: 50%;
+    width: 1rem;
+    height: 1rem; 
+    z-index: 500;  
+}
+
+.happening {
+    margin-bottom: 1rem;
+    height: 70%;    
+    position: relative;
+    width: 20%;
+
+}
+
+.textBox {
+    width: 10rem;
+    height: 7rem;  
+}
+
