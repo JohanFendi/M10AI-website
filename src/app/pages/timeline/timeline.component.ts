@@ -1,31 +1,23 @@
-import { Component, PLATFORM_ID } from '@angular/core';
-import { NgFor, NgIf,  isPlatformBrowser, isPlatformServer } from '@angular/common';
+import { Component, HostListener, TrackByFunction} from '@angular/core';
+import { NgFor, NgIf, NgTemplateOutlet} from '@angular/common';
+import { windowHandler } from '../../app.windowHandler';
 
-class Happening{
-  name : String = ""; 
-  date : String = "";
-  
-  constructor(name: String, date : String){
-    this.name = name; 
-    this.date = date; 
+
+//Pure dataclass, defines a happening with a name and a date
+class Happening{ 
+  constructor(public readonly name: String, public readonly date : String){
   }
 }
 
-class Timeline{
-  happenings : Happening[] = []; 
-  happeningHeight : number = 15; //rem
-  height : Number = 0; 
-
-  constructor(happenings: Happening[]){
-    this.height = happenings.length * this.happeningHeight; 
-    this.happenings = happenings; 
+/*Pure dataclass, defines a timeline with a list of happenings 
+and a height for each section of the timeline*/
+class Timeline{  
+  public readonly happeningHeight : String = "15rem"; // Used in the html to set
+                                                      // the height of each timeline section
+  constructor(public readonly happenings: Happening[]){ 
   }
- 
-  getHappeningHeight(){
-    return this.happeningHeight.toString() + "rem"; 
-  }
-
 }
+
 
 @Component({
   selector: 'app-timeline',
@@ -33,19 +25,24 @@ class Timeline{
   templateUrl: './timeline.component.html',
   styleUrl: './timeline.component.css'
 })
-export class TimelineComponent { 
-  ngOnInit() {
-      window.scroll(0,0);
-  }
 
+/*Class inherits functionality from the windowhandler class
+inorder to handle window resizing.*/
 
-  happenings : Happening[] = [
+export class TimelineComponent extends windowHandler{
+  public smallTimeline: boolean = false; 
+  private readonly happenings : Happening[] = [
                               new Happening("First Workshop", "2024-11-02"),
                               new Happening("M10AI Officially Founded", "2024-11-07"),
                               new Happening("Second Workshop", "2024-11-28"),
                               new Happening("Website launched", "2025-01-01")
-                       
                               ]; 
 
-  timeline : Timeline = new Timeline(this.happenings); 
+  public readonly timeline : Timeline = new Timeline(this.happenings); 
+
+
+  //The observeMediaQuery function and smallWindowQuery are inherited from the windowHandler class
+  ngOnInit() : void{
+    this.smallTimeline = this.observeMediaQuery(this.smallWindowQuery); 
+  }
 }

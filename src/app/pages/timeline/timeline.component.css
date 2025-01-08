@@ -1,12 +1,12 @@
-
 .container{
     display: flex;
-    flex-direction: column;
-    gap: 10rem; 
+    flex-direction: column;   
 }
 
-.quote {
-    font-size: 2rem;
+@media (max-width:400px){
+    .quote {
+        font-size:1.5rem; 
+    }
 }
 
 .timelineContainer {
@@ -23,7 +23,7 @@
 }
 
 .leftHappeningContainer, .rightHappeningContainer {
-    margin-top: 1rem; /*Padding to align with the first blue circle of the timeline*/
+    margin-top: 1rem; /*Padding to align with the first circle of the timeline*/
     gap : 1rem; 
 }
 
@@ -33,17 +33,27 @@
 }
 
 .timelineBar {
-    background: linear-gradient(to bottom, #0e57bd, #a6b408); 
+    background: linear-gradient(to bottom, rgb(247, 153, 13), rgb(144, 40, 240)); 
     width: 0.25rem;   
-    box-shadow: 0 0 1rem 1rem rgba(54, 56, 7, 0.25); 
+     
 }
 
 .timelineCircle {
-    background-color:#0e57bd;
+    background-color: rgb(247, 153, 13);
     border-radius: 50%;
     width: 1rem;
     height: 1rem; 
-    z-index: 500;  
+    z-index: 50;  
+    box-shadow: 0 0 1rem 1rem rgba(152, 103, 18, 0.25);
+}
+
+.happeningContainer {
+    display : flex; 
+    flex-direction: column;
+}
+.spacing {
+    width: 100%; 
+    margin-bottom: 1rem;
 }
 
 .happening {
@@ -55,7 +65,14 @@
 }
 
 .textBox {
-    width: 10rem;
+    width: 10rem; 
     height: 7rem;  
+}
+
+@media (max-width:300px){
+    .textBox{
+        width: 6rem;
+        height: 6rem;
+    }
 }
 

@@ -1,13 +1,27 @@
 <header>
     <div class = "headerContainer">
-        <a routerLink = "" routerLinkActive = "active" [routerLinkActiveOptions] = "{exact:true}" class = "route">
+        <a routerLink = "" routerLinkActive = "active" [routerLinkActiveOptions] = "{exact:true}" class = "logoroute">
             <img src="logo.webp" alt="M10AI Logo" class = "logo">
         </a>
-        <nav>
-            <a routerLink = "" routerLinkActive = "active" [routerLinkActiveOptions] = "{exact:true}" class = "route">Home</a>
-            <a routerLink = "timeline" routerLinkActive = "active" [routerLinkActiveOptions] = "{exact:true}" class = "route" >Timeline</a>
-            <a routerLink = "about-us" routerLinkActive = "active" [routerLinkActiveOptions] = "{exact:true}" class = "route" >About Us</a>
+        
+        <div *ngIf="this.isSmallScreen">
+            <div class = "scalableBox hamburger" (click) = "toggleMenu()">
+                <span id = "firstPaddy" class = "paddy"></span>
+                <span id = "secondPaddy" class = "paddy"></span>
+                <span id = "thirdPaddy" class = "paddy"></span>
+            </div>
+            
+            <nav [style.height]="menuHeight" class = "menu" [@openClose]="getMenuState()" >
+                <a *ngFor="let route of this.routes" routerLink = {{route.link}} routerLinkActive = "active" 
+                [routerLinkActiveOptions] = "{exact:true}" class = "route" (click)="toggleMenu()">{{route.name}}</a>
+            </nav>
+
+        </div>
+        <nav class = "routes" *ngIf="!this.isSmallScreen">
+            <a *ngFor="let route of this.routes" routerLink = {{route.link}} routerLinkActive = "active" 
+                [routerLinkActiveOptions] = "{exact:true}" class = "route">{{route.name}}</a>
         </nav>
-        <div class = "spacing"></div>
+
+        <div class = "spacing" *ngIf="!this.isSmallScreen"></div>
     </div>
 </header>

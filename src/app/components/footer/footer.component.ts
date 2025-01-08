@@ -7,6 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './footer.component.css'
 })
 export class FooterComponent {
-  email : String = "m10ai@proton.me"
+  readonly email : String = "m10ai@proton.me"
   
 }

@@ -1,106 +1,36 @@
 body {
     background-color: rgb(10, 10, 10);
     color : white;
-    margin: 0;  
     font-family: sans-serif;
+    margin: 0;  
     z-index: 1;
     overflow-x: hidden;
 }
 
-.color {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-image: radial-gradient(closest-side,rgb(38, 110, 155),rgb(10, 10, 10));
-    z-index: -1;
-    top :0;
-    left: 0;
+.background {
+    width: 75%;
+    height: 200%;
+    background-image: radial-gradient(closest-side,rgb(76, 1, 106),rgb(10, 10, 10));
     opacity: 0;
-    
+    position: absolute;
+    z-index: -1;
+    top:-75%; 
+    left:12.5%;
     animation: fadeInBackground 4s ease forwards;
     animation-delay: 2s;
 }
 
-.textBox {
-    padding: 1rem;
-    background-color: rgb(29, 29, 29);
-    position: relative; 
-    border-radius: 0.5rem;
-    text-align: center;
-    font-size: 1rem;
-    color: rgb(209, 206, 206); 
-    padding-bottom: 1rem;
-    
-    
-}
 
-.textBox::after, .textBox::before {
-    content : ""; 
-    width: 100%;
-    height: 100%;
+/*---------------------------------Styles for titles---------------------------------*/
 
-    position: absolute;
-    z-index: -1;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 0.125rem; 
-    border-radius: 0.5rem;
-  
-    background-image: conic-gradient(from var(--angle), rgb(56, 91, 148), rgb(180, 173, 69),  rgb(57, 91, 146));
-    animation: 3s spin linear infinite;
-}
-
-.textBox::before {
-    filter: blur(2rem);
-    opacity: 0.5;
-}
-
-.textBoxTitle {
-    text-align: center;
-    color: white;
-    font-size: 1.1rem;
-}
-
-.scalableBox {
-    transition: transform .3s ease;
-    animation: fadeIn linear;
-    animation-timeline: view();
-    animation-range: entry 0% cover 40%;
-    animation-fill-mode: forwards;
-    
-}
-
-.scalableBox:hover {
-    transform: scale(1.05)
-}
-
-.textBox:hover {
-    background-color: rgb(35, 35, 35);
-}
-
-.title {
-    font-size: 1rem; 
-}
-
-@property --angle {
-    syntax: "<angle>";
-    initial-value: 0deg;
-    inherits: false;
-}
-
-@keyframes spin {
-    from {--angle : 0deg}
-    to {--angle : 360deg}
-}
 
 .titleContainer {
     display: flex;
     flex-direction: column;
     text-align: center;
     gap: 1rem; 
-    margin-top: 15rem;
-    margin-bottom: 20rem;
+    margin: 15rem 1rem;
+    margin-bottom: 30rem;
 }
 
 .title, .subTitle, .quote {
@@ -117,8 +47,111 @@ body {
 .subTitle {
     font-size: 1rem;
     animation-delay: 2s; 
-    
 }
+
+@media (max-width:400px){
+    .title{
+        font-size:3rem; 
+    }
+}
+
+/*-------------------------------styling for textboxes---------------------------------*/
+
+
+.textBox {
+    padding: 1rem;
+    background-color: rgb(29, 29, 29);
+    position: relative; 
+    border-radius: 0.5rem;
+    text-align: center;
+    font-size: 1rem;
+    color: rgb(209, 206, 206); 
+    padding-bottom: 1rem;
+}
+
+@media (max-width: 320px){
+    .textBox {
+        font-size: 0.8rem;
+    }
+}
+
+.textBox::after, .textBox::before {
+    content : ""; 
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0.125rem; 
+    border-radius: 0.5rem;
+  
+    background-image: conic-gradient(from var(--angle), rgb(247, 153, 13), rgb(144, 40, 240),  rgb(247, 153, 13)); 
+    animation: 3s spin linear infinite;
+}
+
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.textBox::before {
+    filter: blur(2rem);
+    opacity: 0.5;
+}
+
+.textBoxTitle {
+    text-align: center;
+    color: white;
+    font-size: 1.1rem;
+}
+
+.textBox:hover {
+    background-color: rgb(35, 35, 35);
+}
+
+/*Displays multiple textboxes horisontally*/
+.textBoxContainer {
+    display: flex;
+    justify-content: center;
+    gap: 10vw;
+}
+
+/*TextboxPictureContainer only used in about us*/
+@media (max-width: 768px) {
+    .textBoxContainer, .textBoxPictureContainer {
+        flex-direction: column;
+        align-items: center;
+        gap: 5rem;
+    }
+
+    .textBox {
+        width: 80%;
+    }
+}
+
+
+/*----------------Applied to pictures and textboxes for interactability-------------------*/
+
+
+.scalableBox {
+    transition: transform .3s ease;
+    animation: fadeIn linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+    animation-fill-mode: forwards;
+}
+
+.scalableBox:hover {
+    transform: scale(1.05)
+}
+
+
+/*-----------------------------------Animations-------------------------------------------*/
+
 
 @keyframes fadeIn {
     from {       
@@ -138,14 +171,13 @@ body {
     }
 }
 
-@keyframes fadeDown {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 0.9;
-        transform: translateY(0);
-    }
+/*Used for textbox border*/
+@keyframes spin {
+    from {--angle : 0deg}
+    to {--angle : 360deg}
 }
+
+
+
+
 

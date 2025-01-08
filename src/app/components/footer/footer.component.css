@@ -7,6 +7,7 @@
     height:15rem; 
 }
 
+/*Thin gray line above the footer*/
 .line {
     height: 1px; 
     width: 80%;
@@ -18,10 +19,17 @@
     gap: 2rem; 
 }
 
+@media (max-width: 320px){
+    .socialsContainer {
+        gap: 1rem; 
+    }
+}
+
+/*Social icons are SVG images*/
 .social-icon{
     width: 2rem;
     height: 2rem; 
-    fill: white; 
+    fill: white;
     transition: transform .2s ease;
 }
 
@@ -33,11 +41,6 @@
 .social-icon:not(:hover) {
     transform: scale(1);
 }
-
-
-
-
-
 
 .emailContainer {
     display: flex;   

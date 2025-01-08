@@ -1,17 +1,18 @@
 <main>
-    <div class = "color"></div>
+    <div class = "background"></div>
     <div class = "container">
 
         <div class = "titleContainer">
             <h1 class = "quote" >"Rome was not built in one day..."</h1>
-            <h2 class = "subTitle">- John Heywood</h2>
+            <h2 class = "subTitle">- Someone</h2>
         </div>
 
 
-        <div class = "timelineContainer">
+        <div class = "timelineContainer" *ngIf="!smallTimeline">
 
             <div class = "leftHappeningContainer">
-                <div class = "happeningContainer" *ngFor="let happening of happenings; let i = index" [style.height]="timeline.getHappeningHeight()">
+                <div class = "happeningContainer" *ngFor="let happening of timeline.happenings let i = index" 
+                        [style.height]="timeline.happeningHeight">
                     <div class = "scalableBox happening" *ngIf="i % 2 == 0" >
                         <div class = "textBox">
                             <h3 class = "textBoxTitle"> {{happening.date}}</h3>
@@ -23,23 +24,47 @@
 
             <div class = "timelineBarContainer">
                 <div class = "timelineCircle"></div>
-                <div class = "scalableBox timelineSection" *ngFor="let happening of happenings">
-                    <div class = "timelineBar" [style.height]="timeline.getHappeningHeight()"></div>
+                <div class = "scalableBox timelineSection" *ngFor="let happening of timeline.happenings">
+                    <div class = "timelineBar" [style.height]="timeline.happeningHeight"></div>
                     <div class = "timelineCircle"></div>
                 </div>
             </div>
 
             <div class = "rightHappeningContainer">
-                <div class = "happeningContainer" *ngFor="let happening of happenings; let i = index" [style.height]="timeline.getHappeningHeight()">
+                <div class = "happeningContainer" *ngFor="let happening of timeline.happenings; let i = index" 
+                [style.height]="timeline.happeningHeight">
                     <div class = "scalableBox happening" *ngIf="i % 2 == 1" >
                         <div class = "textBox">
                             <h3 class = "textBoxTitle"> {{happening.date}}</h3>
                             {{happening.name}}</div>
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        
+        <div class = "timelineContainer" *ngIf="smallTimeline">
+
+            <div class = "leftHappeningContainer">
+                <div class = "happeningContainer"  *ngFor="let happening of timeline.happenings" 
+                        [style.height]="timeline.happeningHeight">
+                    <div class = "scalableBox happening" >
+                        <div class = "textBox">
+                            <h3 class = "textBoxTitle"> {{happening.date}}</h3>
+                            {{happening.name}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class = "timelineBarContainer">
+                <div class = "timelineCircle"></div>
+                <div class = "scalableBox timelineSection" *ngFor="let happening of timeline.happenings">
+                    <div class = "timelineBar" [style.height]="timeline.happeningHeight"></div>
+                    <div class = "timelineCircle"></div>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 </main>
