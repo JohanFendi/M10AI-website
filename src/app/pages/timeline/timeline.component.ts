@@ -26,23 +26,24 @@ class Timeline{
   styleUrl: './timeline.component.css'
 })
 
+
 /*Class inherits functionality from the windowhandler class
 inorder to handle window resizing.*/
-
 export class TimelineComponent extends windowHandler{
   public smallTimeline: boolean = false; 
   private readonly happenings : Happening[] = [
                               new Happening("First Workshop", "2024-11-02"),
                               new Happening("M10AI Officially Founded", "2024-11-07"),
                               new Happening("Second Workshop", "2024-11-28"),
+                              new Happening("Website launched", "2025-01-01"), new Happening("Second Workshop", "2024-11-28"),
                               new Happening("Website launched", "2025-01-01")
                               ]; 
 
   public readonly timeline : Timeline = new Timeline(this.happenings); 
-
+  private readonly smallTimelineWidth : number = 400; //px
 
   //The observeMediaQuery function and smallWindowQuery are inherited from the windowHandler class
   ngOnInit() : void{
-    this.smallTimeline = this.observeMediaQuery(this.smallWindowQuery); 
+    this.smallTimeline = this.isSmallDevice(this.smallTimelineWidth); 
   }
 }

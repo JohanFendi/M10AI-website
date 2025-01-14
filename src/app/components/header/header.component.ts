@@ -1,5 +1,5 @@
-import { NgIf, NgFor, NgStyle } from '@angular/common';
-import { Component} from '@angular/core';
+import { NgIf, NgFor, NgStyle, isPlatformBrowser } from '@angular/common';
+import { Component, InjectionToken, PLATFORM_ID, Inject} from '@angular/core';
 import { RouterLinkActive, RouterLink } from '@angular/router';
 import { windowHandler } from '../../app.windowHandler';
 import { trigger, animate, style , state, transition} from '@angular/animations';
@@ -30,17 +30,19 @@ class Route {
 
 export class HeaderComponent extends windowHandler {
   private showMenu : boolean = false; //If hamburger is clicked, slide in the menu
-  private readonly routeHeight : number = 4; //rem 
-  public isSmallScreen : boolean = false; //If small screen, we show the hambuger menu, else regular nav
-
+  public isSmallScreen : boolean = false; //If device is small screen, we show the hambuger menu, else regular nav
   public readonly routes : Route[] = [new Route("", "Home"),
                                       new Route("timeline", "Timeline"), 
                                       new Route("about-us", "About us")];
-  public readonly menuHeight : string = (this.routes.length*this.routeHeight).toString() + "rem"; 
+
+  private readonly smallHeaderWidth : number = 400; 
+  private readonly routeHeight : number = 4; //rem 
+  public readonly menuHeight : string = (this.routes.length*this.routeHeight).toString() + "rem";
+   
 
   //The observeMediaQuery function and smallWindowQuery are inherited from the windowHandler class
   ngOnInit() : void{
-    this.isSmallScreen = this.observeMediaQuery(this.smallWindowQuery); 
+    this.isSmallScreen = this.isSmallDevice(this.smallHeaderWidth); 
   }
 
   toggleMenu() : void {
@@ -54,3 +56,7 @@ export class HeaderComponent extends windowHandler {
     return "closed"; //-||-
   }
 }
+function inject(PLATFORM_ID: InjectionToken<Object>) {
+  throw new Error('Function not implemented.');
+}
+
