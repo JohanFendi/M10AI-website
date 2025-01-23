@@ -1,7 +1,9 @@
 .container{
     display: flex;
     flex-direction: column;   
+    gap: 10rem; 
 }
+
 
 @media (max-width:400px){
     .quote {
@@ -66,7 +68,13 @@
 
 .textBox {
     width: 10rem; 
-    height: 7rem;  
+    height: 7rem; 
+}
+
+
+.aboutUsTextBox{
+    width : 14rem;
+    height: 20rem; 
 }
 
 @media (max-width:300px){
@@ -74,5 +82,29 @@
         width: 6rem;
         height: 6rem;
     }
+
+    .aboutUsTextBox {
+        width: 9rem; 
+        height: 18rem; 
+    }
 }
+
+
+.quoteContainer {
+    margin: 0; 
+}
+ 
+@media (min-height : 500px){
+    .container {
+        gap: 20rem; 
+    }
+
+}
+
+
+.linkBox {  
+    height: fit-content; 
+    width: 100px;
+}
+
 

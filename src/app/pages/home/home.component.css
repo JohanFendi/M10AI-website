@@ -1,11 +1,42 @@
 .container {
     margin : 0 2rem; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15rem; 
 }
+
+
 .textBox {
-    max-width: 12rem;
-    height: fit-content;
+    width: 13rem; 
+    height: 17rem;
 }
 
 
+/*Horisontal Container for textbox and picture*/
+.textBoxPictureContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 7rem; 
+}
 
+
+.eventPoster {
+    height: 18rem;
+    aspect-ratio: 12/16;
+    border-radius: 1rem;
+}
+
+@media (max-width: 650px) {
+    .container{
+        gap: 5rem;
+
+    }
+
+    img {
+        display: none;
+    }
+
+}
 

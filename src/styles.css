@@ -30,7 +30,7 @@ body {
     text-align: center;
     gap: 1rem; 
     margin: 15rem 1rem;
-    margin-bottom: 30rem;
+    margin-bottom: 10rem;
 }
 
 .title, .subTitle, .quote {
@@ -39,19 +39,21 @@ body {
     opacity: 0;
 }
 
-.title {
-    font-size: 4rem;
-    animation-delay: 1s; 
-}
 
 .subTitle {
     font-size: 1rem;
     animation-delay: 2s; 
 }
 
+
+.title {
+    font-size : 3rem; 
+}
+
+
 @media (max-width:400px){
     .title{
-        font-size:3rem; 
+        font-size:2rem; 
     }
 }
 
@@ -64,7 +66,7 @@ body {
     position: relative; 
     border-radius: 0.5rem;
     text-align: center;
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: rgb(209, 206, 206); 
     padding-bottom: 1rem;
 }
@@ -130,6 +132,7 @@ body {
 
     .textBox {
         width: 80%;
+        height: fit-content;
     }
 }
 

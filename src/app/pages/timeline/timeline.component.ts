@@ -1,5 +1,5 @@
-import { Component, HostListener, TrackByFunction} from '@angular/core';
-import { NgFor, NgIf, NgTemplateOutlet} from '@angular/common';
+import { Component } from '@angular/core';
+import { NgFor, NgIf } from '@angular/common';
 import { windowHandler } from '../../app.windowHandler';
 
 
@@ -41,6 +41,8 @@ export class TimelineComponent extends windowHandler{
 
   public readonly timeline : Timeline = new Timeline(this.happenings); 
   private readonly smallTimelineWidth : number = 400; //px
+
+
 
   //The observeMediaQuery function and smallWindowQuery are inherited from the windowHandler class
   ngOnInit() : void{

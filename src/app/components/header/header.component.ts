@@ -1,5 +1,5 @@
-import { NgIf, NgFor, NgStyle, isPlatformBrowser } from '@angular/common';
-import { Component, InjectionToken, PLATFORM_ID, Inject} from '@angular/core';
+import { NgIf, NgFor } from '@angular/common';
+import { Component } from '@angular/core';
 import { RouterLinkActive, RouterLink } from '@angular/router';
 import { windowHandler } from '../../app.windowHandler';
 import { trigger, animate, style , state, transition} from '@angular/animations';
@@ -32,8 +32,7 @@ export class HeaderComponent extends windowHandler {
   private showMenu : boolean = false; //If hamburger is clicked, slide in the menu
   public isSmallScreen : boolean = false; //If device is small screen, we show the hambuger menu, else regular nav
   public readonly routes : Route[] = [new Route("", "Home"),
-                                      new Route("timeline", "Timeline"), 
-                                      new Route("about-us", "About us")];
+                                      new Route("aboutus", "About us")];
 
   private readonly smallHeaderWidth : number = 400; 
   private readonly routeHeight : number = 4; //rem 
@@ -56,7 +55,5 @@ export class HeaderComponent extends windowHandler {
     return "closed"; //-||-
   }
 }
-function inject(PLATFORM_ID: InjectionToken<Object>) {
-  throw new Error('Function not implemented.');
-}
+
 
